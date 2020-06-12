@@ -5,8 +5,9 @@ import Game from './components/Game';
 class App extends React.Component{
   render(){
     return(
-      <Game/>
-      
+      <div className="game">
+        <Game/>
+      </div>
     ) 
   }
 }
