@@ -5,8 +5,8 @@ export default class Game extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            xisNext:true,
-            stepNo: 0,
+            xIsNext:true,
+            stepNumber: 0,
             history: [
                 {squares: Array(9).fill(null)}
             ]
@@ -16,22 +16,22 @@ export default class Game extends React.Component {
         const history = this.state.history;
         const current = history[history.length - 1];
         const squares = current.squares;
-        if(this.state.isNext) squares[i]='x';
-        else squares[i]='0';
+        squares[i] = this.state.xIsNext ? 'X' : 'O'
         this.setState({
             history: history.concat({
                 squares: squares
             }),
-            xisNext: !this.state.xisNext,
+            xIsNext: !this.state.xIsNext,
             stepNumber: history.length,
             
         })
     }
     render() {
+        const history = this.state.history;
+        const current = history[this.state.stepNumber];
         return (
             <div className="game">
-                <Board/>
-                <button onClick = {()=> this.changeState()}>Click Me!</button>
+                <Board clickAction = {(i) => this.handleClick(i)} squares = {current.squares}/>
             </div>
         )
     }
