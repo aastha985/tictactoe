@@ -10,7 +10,14 @@ export default class Game extends React.Component {
             history: [
                 {squares: Array(9).fill(null)}
             ],
+            value:5
         }
+    }
+
+    changeState = () => {
+        this.setState({
+            value:6
+        })
     }
 
     someFunction = () => {
@@ -18,10 +25,12 @@ export default class Game extends React.Component {
     }
 
     render() {
+        // console.log(this.state);
         const result = this.someFunction()
         return (
             <div className="game">
                 <Board value = {result}/>
+                <button onClick = {()=> this.changeState()}>Click Me!</button>
             </div>
         )
     }
