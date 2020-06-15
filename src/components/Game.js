@@ -16,6 +16,15 @@ export default class Game extends React.Component {
         const history = this.state.history;
         const current = history[history.length - 1];
         const squares = current.squares;
+
+        const winner = calculateWinner(squares);
+        
+        if(winner || squares[i]){
+            return
+        }
+
+
+
         squares[i] = this.state.xIsNext ? 'X' : 'O'
         this.setState({
             history: history.concat({
@@ -29,9 +38,22 @@ export default class Game extends React.Component {
     render() {
         const history = this.state.history;
         const current = history[this.state.stepNumber];
+        
+        let status
+        const winner = calculateWinner(current.squares)
+        if(winner){
+            status = "Winner is "+winner;
+        }
+        else{
+            status = "Next Player is "+(this.state.xIsNext ? 'X' : 'O')
+        }
+
         return (
             <div className="game">
                 <Board clickAction = {(i) => this.handleClick(i)} squares = {current.squares}/>
+                <div className="game-info">
+                    <div>{status}</div>
+                </div>
             </div>
         )
     }
