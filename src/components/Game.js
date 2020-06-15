@@ -44,6 +44,9 @@ export default class Game extends React.Component {
         if(winner){
             status = "Winner is "+winner;
         }
+        else if(this.state.stepNumber==9){
+            status = "Tie!!"
+        }
         else{
             status = "Next Player is "+(this.state.xIsNext ? 'X' : 'O')
         }
