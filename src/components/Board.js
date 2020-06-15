@@ -5,7 +5,7 @@ export default function Board(props){
     return (
         <div>
             <div className="board-row">
-                <Square insideValue = {props.value}/>
+                <Square/>
                 <Square/>
                 <Square/>
             </div>

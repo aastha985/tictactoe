@@ -9,27 +9,28 @@ export default class Game extends React.Component {
             stepNo: 0,
             history: [
                 {squares: Array(9).fill(null)}
-            ],
-            value:5
+            ]
         }
     }
-
-    changeState = () => {
+    handleClick = (i) => {
+        const history = this.state.history;
+        const current = history[history.length - 1];
+        const squares = current.squares;
+        if(this.state.isNext) squares[i]='x';
+        else squares[i]='0';
         this.setState({
-            value:6
+            history: history.concat({
+                squares: squares
+            }),
+            xisNext: !this.state.xisNext,
+            stepNumber: history.length,
+            
         })
     }
-
-    someFunction = () => {
-        return 5
-    }
-
     render() {
-        // console.log(this.state);
-        const result = this.someFunction()
         return (
             <div className="game">
-                <Board value = {result}/>
+                <Board/>
                 <button onClick = {()=> this.changeState()}>Click Me!</button>
             </div>
         )
