@@ -2,8 +2,8 @@ import React from 'react';
 import Board from './Board';
 
 export default class Game extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             xisNext:true,
             stepNo: 0,
@@ -12,10 +12,16 @@ export default class Game extends React.Component {
             ],
         }
     }
+
+    someFunction = () => {
+        return 5
+    }
+
     render() {
+        const result = this.someFunction()
         return (
             <div className="game">
-                <Board/>
+                <Board value = {result}/>
             </div>
         )
     }
